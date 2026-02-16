@@ -3,21 +3,34 @@
   
   let city = '';
   let weatherData = null;
+  let error = '';
   
   async function searchWeather() {
-    // Check of er iets is ingevuld
     if (city === '') {
       alert('Typ eerst een stad!');
       return;
     }
     
+    // Reset oude data
+    weatherData = null;
+    error = '';
+    
     const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
     
-    const response = await fetch(url);
-    const data = await response.json();
-    
-    weatherData = data;
-    console.log('Weather data:', data);
+    try {
+      const response = await fetch(url);
+      const data = await response.json();
+      
+      // Check of API een error teruggaf
+      if (data.cod === '404') {
+        error = 'Stad niet gevonden!';
+      } else {
+        weatherData = data;
+      }
+      
+    } catch (e) {
+      error = 'Er ging iets mis!';
+    }
   }
 </script>
 
@@ -32,6 +45,10 @@
 <button on:click={searchWeather}>
   Zoek Weer
 </button>
+
+{#if error}
+  <p style="color: red;">{error}</p>
+{/if}
 
 {#if weatherData}
   <p>Stad: {weatherData.name}</p>
