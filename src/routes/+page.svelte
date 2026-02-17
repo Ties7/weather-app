@@ -2,33 +2,36 @@
   const apiKey = import.meta.env.PUBLIC_WEATHER_API_KEY;
   
   let city = '';
-  let weatherData = null;
+  let weather = null;
   let error = '';
   
   async function searchWeather() {
-    if (city === '') {
-      alert('Typ eerst een stad!');
-      return;
-    }
-    
-    // Reset oude data
-    weatherData = null;
+    // Reset data, zodat bij onbekende stad die data weg word gehaald
+    weather = null;
     error = '';
     
     const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
     
-    try {
+    try { //probeer dit
       const response = await fetch(url);
       const data = await response.json();
       
-      // Check of API een error teruggaf
+      // Check of api een error teruggaf
       if (data.cod === '404') {
         error = 'Stad niet gevonden!';
-      } else {
-        weatherData = data;
+        return;
       }
+
+      weather = {
+        city: data.name,
+        temp: Math.round(data.main.temp),
+        description: data.weather[0].description,
+        icon: `https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`,
+        humidity: data.main.humidity,
+        wind: Math.round(data.wind.speed * 3.6)
+      };
       
-    } catch (e) {
+    } catch (e) { //en doe dit als er een error is
       error = 'Er ging iets mis!';
     }
   }
@@ -36,21 +39,26 @@
 
 <h1>Weather App</h1>
 
-<input 
-  type="text" 
-  bind:value={city}
-  placeholder="Type een stad..."
-/>
-
-<button on:click={searchWeather}>
-  Zoek Weer
-</button>
+<form on:submit|preventDefault={searchWeather}>
+  <input type="text" bind:value={city} placeholder="Type een stad..."/>
+  <button type="submit">Zoek</button>
+</form>
 
 {#if error}
-  <p style="color: red;">{error}</p>
+  <p class="error-text">{error}</p>
 {/if}
 
-{#if weatherData}
-  <p>Stad: {weatherData.name}</p>
-  <p>Temperatuur: {weatherData.main.temp}°C</p>
+{#if weather}
+  <p>{weather.city}</p>
+  <img src={weather.icon} alt={weather.description} />
+  <p>{weather.temp}°C</p>
+  <p>{weather.description}</p>
+  <p>💧 {weather.humidity}%</p>
+  <p>💨 {weather.wind} km/u</p>
 {/if}
+
+<style>
+  .error-text {
+    color: red;
+  }
+</style>
