@@ -78,6 +78,21 @@
   <p>💨 {weather.wind} km/u</p>
 {/if}
 
+{#if forecast}
+  <h2>5-daagse voorspelling</h2>
+  
+  <div class="forecast">
+    {#each forecast as day}
+      <div class="forecast-card">
+        <p>{day.date}</p>
+        <img src={day.icon} alt={day.description} />
+        <p>{day.temp}°C</p>
+        <p>{day.description}</p>
+      </div>
+    {/each}
+  </div>
+{/if}
+
 <style>
   .error-text {
     color: red;
