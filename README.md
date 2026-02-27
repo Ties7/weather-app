@@ -1,42 +1,30 @@
-# sv
+## 3.1.2 — Principes, standaarden en best-practices
 
-Everything you need to build a Svelte project, powered by [`sv`](https://github.com/sveltejs/cli).
+### Progressive Enhancement
 
-## Creating a project
+### Veiligheid — API key
 
-If you're seeing this, you've probably already done this step. Congrats!
+### Semantische HTML
 
-```sh
-# create a new project
-npx sv create my-app
-```
+### Toegankelijkheid (a11y)
 
-To recreate this project with the same configuration:
+### Responsive CSS
 
-```sh
-# recreate this project
-npx sv create --template minimal --no-types --install npm ./
-```
 
-## Developing
+## 3.4.3 — Complexe frontend code, tools en frameworks
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+### SvelteKit form actions
 
-```sh
-npm run dev
+### Two-way binding
 
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
-```
+### Svelte stores — writable en derived
 
-## Building
+### onMount voor client-side interactie
 
-To create a production version of your app:
+### Reactive statements
 
-```sh
-npm run build
-```
+### tick() voor DOM synchronisatie
 
-You can preview the production build with `npm run preview`.
+### Async/await en fetch
 
-> To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
+### Array verwerking met .map()
