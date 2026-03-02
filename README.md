@@ -34,7 +34,7 @@ https://github.com/Ties7/weather-app/blob/048202ed0eb721df433457a8929e6b09657db7
 ### SvelteKit form actions
 De API calls gebeuren server-side via een SvelteKit form action. De server ontvangt de stadsnaam, doet twee API calls naar openweathermap, verwerkt de data, en stuurt het resultaat terug.
 
-https://github.com/Ties7/weather-app/blob/048202ed0eb721df433457a8929e6b09657db763/src/routes/%2Bpage.server.js#L4-L7
+https://github.com/Ties7/weather-app/blob/048202ed0eb721df433457a8929e6b09657db763/src/routes/%2Bpage.server.js#L4-L51
 
 ### Two way binding
 Het input veld gebruikt bind:value voor two way binding. Als de gebruiker typt updatet selectedCity. Als selectedCity verandert in de code bijvoorbeeld bij het klikken op een favoriet updatet het input veld automatisch mee.
