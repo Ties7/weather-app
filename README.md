@@ -1,42 +1,42 @@
-# sv
+## 3.1.2 — Principes, standaarden en best-practices
 
-Everything you need to build a Svelte project, powered by [`sv`](https://github.com/sveltejs/cli).
+### Progressive Enhancement
+Het form heeft een method="POST" en een action="?/search" dit betekent dat het form werkt zonder JavaScript. Met JavaScript wordt use:enhance toegevoegd wat de submit onderschept en zorgt dat de pagina niet herlaad. Alles werkt dus zonder js alleen maakt het het wel beter.
 
-## Creating a project
+### Semantische HTML
+De html is semantisch en de html elementen zijn gekozen op basis van hun functie:
 
-If you're seeing this, you've probably already done this step. Congrats!
+`<main>` de hoofdinhoud van de pagina
 
-```sh
-# create a new project
-npx sv create my-app
-```
+`<nav>` de favorieten navigatie
 
-To recreate this project with the same configuration:
+`<section>` secties voor huidig weer en forecast
 
-```sh
-# recreate this project
-npx sv create --template minimal --no-types --install npm ./
-```
+`<header>` de header van de weersectie met stadsnaam en ster
 
-## Developing
+`<dl>` `<dt>` `<dd>` voor de weerdetails (luchtvochtigheid, windsnelheid)
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+`<ol>` de forecast is een geordende lijst van dagen
 
-```sh
-npm run dev
+### Toegankelijkheid (a11y)
 
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
-```
+### Responsive CSS
 
-## Building
 
-To create a production version of your app:
+## 3.4.3 — Complexe frontend code, tools en frameworks
 
-```sh
-npm run build
-```
+### SvelteKit form actions
 
-You can preview the production build with `npm run preview`.
+### Two-way binding
 
-> To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
+### Svelte stores — writable en derived
+
+### onMount voor client-side interactie
+
+### Reactive statements
+
+### tick() voor DOM synchronisatie
+
+### Async/await en fetch
+
+### Array verwerking met .map()
