@@ -11,19 +11,19 @@ export const actions = {
     }
 
     try {
-      const weatherRes = await fetch(
+      const weatherResponse = await fetch(
         `https://api.openweathermap.org/data/2.5/weather?q=${(city)}&appid=${WEATHER_API_KEY}&units=metric`
       );
-      const weatherData = await weatherRes.json();
+      const weatherData = await weatherResponse.json();
 
       if (weatherData.cod === '404') {
-        return fail(404, { error: 'Stad niet gevonden.', city });
+        return fail(404, { error: 'Stad niet gevonden.' });
       }
 
-      const forecastRes = await fetch(
+      const forecastResponse = await fetch(
         `https://api.openweathermap.org/data/2.5/forecast?q=${(city)}&appid=${WEATHER_API_KEY}&units=metric`
       );
-      const forecastData = await forecastRes.json();
+      const forecastData = await forecastResponse.json();
 
       const items = forecastData.list;
       const forecast = [0, 8, 16, 24, 32].map((index, i) => ({
@@ -45,7 +45,7 @@ export const actions = {
         forecast,
       };
     } catch {
-      return fail(500, { error: 'Er ging iets mis. Probeer het opnieuw.' });
+      return fail(500, { error: 'Er ging iets mis.' });
     }
   },
 };

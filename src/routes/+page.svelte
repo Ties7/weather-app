@@ -3,8 +3,6 @@
   import { onMount, tick } from 'svelte';
   import {
     favorites,
-    hasFavorites,
-    favoriteCount,
     loadFavorites,
     addFavorite,
     removeFavorite,
@@ -68,22 +66,16 @@
   </form>
 
   <!-- Favorieten -->
-  {#if $hasFavorites}
+{#if $favorites.length}
     <input bind:value={filterQuery} placeholder="Filter favorieten..." class="filter-input" />
     <nav>
       <ul class="favorites-list">
         {#each gefilterdeSteden as fav (fav)}
           <li>
-            <button
-              class="favorite-chip"
-              on:click={() => SearchFavoriteCity(fav)}
-            >
+            <button class="favorite-chip" on:click={() => SearchFavoriteCity(fav)}>
               {fav}
             </button>
-            <button
-              class="remove-btn"
-              on:click={() => removeFavorite(fav)}
-            >
+            <button class="remove-btn" on:click={() => removeFavorite(fav)}>
               <span>×</span>
             </button>
           </li>
@@ -162,7 +154,6 @@
     padding: 0;
     margin: -1px;
     overflow: hidden;
-    clip: rect(0, 0, 0, 0);
     white-space: nowrap;
     border: 0;
   }

@@ -2,9 +2,6 @@ import { writable, derived } from 'svelte/store';
 
 export const favorites = writable([]);
 
-export const favoriteCount = derived(favorites, $favorites => $favorites.length);
-export const hasFavorites = derived(favorites, $favorites => $favorites.length > 0);
-
 export function loadFavorites() {
   if (typeof localStorage === 'undefined') return;
   const opgeslagen = localStorage.getItem('favorites');
@@ -17,7 +14,7 @@ export function addFavorite(city) {
   favorites.update(lijst => {
     if (lijst.includes(city)) return lijst;
     const nieuweLijst = [...lijst, city];
-    localStorage.setItem('favorites', JSON.stringify(nieuweLijst));
+    localStorage.setItem('favorites', JSON.stringify(nieuweLijst)); //array naar string
     return nieuweLijst;
   });
 }
