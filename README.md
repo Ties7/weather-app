@@ -76,7 +76,7 @@ https://github.com/Ties7/weather-app/blob/048202ed0eb721df433457a8929e6b09657db7
 https://github.com/Ties7/weather-app/blob/048202ed0eb721df433457a8929e6b09657db763/src/routes/%2Bpage.server.js#L47-L49
 
 ### Array verwerking met .map()
-De forecast data van OpenWeatherMap heeft 40 meetpunten (één per 3 uur). .map() selecteert één meting per dag en zet die om naar een bruikbaar object:
+De forecast data van OpenWeatherMap heeft 40 meetpunten (één per 3 uur). .map() maakt voor elk item een nieuw item aan en stopt dat allemaal in een nieuwe array:
 
 https://github.com/Ties7/weather-app/blob/048202ed0eb721df433457a8929e6b09657db763/src/routes/%2Bpage.server.js#L28-L34
 
