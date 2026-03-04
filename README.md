@@ -37,16 +37,22 @@ De API calls gebeuren server-side via een SvelteKit form action. De server ontva
 https://github.com/Ties7/weather-app/blob/048202ed0eb721df433457a8929e6b09657db763/src/routes/%2Bpage.server.js#L4-L51
 
 ### Two way binding
-Het input veld gebruikt bind:value voor two way binding. Als de gebruiker typt updatet selectedCity. Als selectedCity verandert in de code bijvoorbeeld bij het klikken op een favoriet updatet het input veld automatisch mee.
+Het input veld gebruikt bind:value voor two way binding. 
+Wanneer de gebruiker typt wordt `selectedCity` automatisch geüpdatet.
+Wanneer `selectedCity` in de code verandert wordt het inputveld automatisch aangepast.
+
+Als de gebruiker typt update selectedCity. 
+
+Als selectedCity verandert in de code bijvoorbeeld bij het klikken op een favoriet updatet het input veld automatisch mee.
 
 https://github.com/Ties7/weather-app/blob/048202ed0eb721df433457a8929e6b09657db763/src/routes/%2Bpage.svelte#L58
 
 https://github.com/Ties7/weather-app/blob/048202ed0eb721df433457a8929e6b09657db763/src/routes/%2Bpage.svelte#L72
 
-### Svelte stores, writable en derived
-De favorieten worden bijgehouden in een writable store buiten het component zodat die data beschikbaar is voor meerdere bestanden. Daarnaast zijn er twee derived stores die automatisch updaten met de favorieten store:
+### Svelte writable store
+De favorieten worden bijgehouden in een writable store (gedeeld geheugen) buiten het component zodat die data beschikbaar is voor meerdere bestanden:
 
-https://github.com/Ties7/weather-app/blob/048202ed0eb721df433457a8929e6b09657db763/src/lib/favorites.js#L3-L6
+https://github.com/Ties7/weather-app/blob/048202ed0eb721df433457a8929e6b09657db763/src/lib/favorites.js#L3
 
 ### onMount voor clientside interactie
 SvelteKit rendert pagina's eerst serverside. localStorage bestaat alleen in de browser. OnMount zorgt dat de favorieten alleen worden geladen als het component in de browser draait:
